@@ -1,0 +1,14 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Jaspr Serve",
+            "command": "clear; taskkill /f /t /im dartvm.exe; jaspr serve",
+            "type": "shell",
+            "group": "build",
+            "presentation": {
+                "reveal": "always"
+            }
+        }
+    ]
+}
