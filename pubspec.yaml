@@ -1,6 +1,6 @@
 name: xitodev_website
 description: A new Jaspr project
-version: 0.0.1
+version: 1.0.0
 
 environment:
   sdk: ^3.10.0
