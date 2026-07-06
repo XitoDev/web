@@ -16,10 +16,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Dart
-        uses: dart-lang/setup-dart@v1
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
         with:
-          sdk: stable
+          channel: 'stable'
 
       - name: Install Jaspr CLI
         run: dart pub global activate jaspr_cli
@@ -27,9 +27,7 @@ jobs:
       - name: Install dependencies
         run: dart pub get
 
-      - name: Generate Static Web
-        # Usa 'generate' en lugar de 'build' para pre-renderizar el servidor Dart 
-        # en archivos estáticos compatibles con Cloudflare Pages.
+      - name: Build Web
         run: jaspr build 
 
       - name: Deploy to Cloudflare Pages
