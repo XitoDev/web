@@ -10,7 +10,7 @@ class AppBar extends StatelessComponent {
     return header([
       nav([
         Leading(),
-        Title(),
+        // Title(),
         Actions(),
       ]),
     ]);

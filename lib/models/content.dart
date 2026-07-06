@@ -2,6 +2,7 @@
 ///
 /// These models represent the core data structures for the XitoDev website,
 /// such as projects, blog posts, and profile information.
+library;
 
 class Project {
   final String id;
