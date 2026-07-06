@@ -3,6 +3,7 @@ name: Build and Deploy Jaspr Web
 on:
   release:
     types: [published]
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -29,7 +30,7 @@ jobs:
       - name: Generate Static Web
         # Usa 'generate' en lugar de 'build' para pre-renderizar el servidor Dart 
         # en archivos estáticos compatibles con Cloudflare Pages.
-        run: jaspr generate 
+        run: jaspr build 
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
