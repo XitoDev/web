@@ -7,7 +7,9 @@ environment:
 
 dependencies:
   dart_mappable: ^4.8.0
+  http: ^1.6.0
   jaspr: ^0.23.1
+  jaspr_riverpod: ^0.4.6
   jaspr_router: ^0.8.2
 
 dev_dependencies:
