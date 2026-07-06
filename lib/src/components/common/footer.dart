@@ -2,6 +2,7 @@ import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:xitodev_website/data/design_tokens.dart';
 import 'package:xitodev_website/src/components/common/flex.dart';
+import 'package:xitodev_website/src/components/home/social_links.dart';
 
 class Footer extends StatelessComponent {
   const Footer();
@@ -18,23 +19,7 @@ class Footer extends StatelessComponent {
           padding: .symmetric(horizontal: 24.px, vertical: 24.px),
           children: [
             h3([.text('XitoDev ')]),
-            Row(
-              spacing: 8.px,
-              children: [
-                button([
-                  .text('GitHub'),
-                ]),
-                button([
-                  .text('YouTube'),
-                ]),
-                button([
-                  .text('Instagram'),
-                ]),
-                button([
-                  .text('Tiktok'),
-                ]),
-              ],
-            ),
+            const SocialLinks(),
             a(
               href: 'https://jaspr.site',
               target: .blank,

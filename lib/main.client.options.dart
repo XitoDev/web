@@ -6,6 +6,9 @@
 
 import 'package:jaspr/client.dart';
 
+import 'package:xitodev_website/src/components/home/github_repos_list.dart'
+    deferred as _github_repos_list;
+
 /// Default [ClientOptions] for use with your Jaspr project.
 ///
 /// Use this to initialize Jaspr **before** calling [runApp].
@@ -22,4 +25,11 @@ import 'package:jaspr/client.dart';
 ///   runApp(...);
 /// }
 /// ```
-ClientOptions get defaultClientOptions => ClientOptions();
+ClientOptions get defaultClientOptions => ClientOptions(
+  clients: {
+    'github_repos_list': ClientLoader(
+      (p) => _github_repos_list.GithubReposList(),
+      loader: _github_repos_list.loadLibrary,
+    ),
+  },
+);

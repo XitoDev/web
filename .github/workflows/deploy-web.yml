@@ -1,0 +1,39 @@
+name: Build and Deploy Jaspr Web
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+  deployments: write
+
+jobs:
+  deploy-web:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Dart
+        uses: dart-lang/setup-dart@v1
+        with:
+          sdk: stable
+
+      - name: Install Jaspr CLI
+        run: dart pub global activate jaspr_cli
+
+      - name: Install dependencies
+        run: dart pub get
+
+      - name: Generate Static Web
+        # Usa 'generate' en lugar de 'build' para pre-renderizar el servidor Dart 
+        # en archivos estáticos compatibles con Cloudflare Pages.
+        run: jaspr generate 
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy build/jaspr/app --project-name=web
