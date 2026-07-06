@@ -28,11 +28,14 @@ jobs:
         run: dart pub get
 
       - name: Build Web
-        run: jaspr build 
+        run: jaspr build
+
+      - name: Clean up build artifacts
+        run: rm -rf build/jaspr/.dart_tool build/jaspr/.build.manifest
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy build/jaspr/app --project-name=web
+          command: pages deploy build/jaspr --project-name=web
